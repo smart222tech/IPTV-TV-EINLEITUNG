@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101827">
+<meta name="description" content="Schritt-für-Schritt-Anleitung zur selbstständigen IPTV-Einrichtung mit Sharavoz: Geräte, Registrierung, Zahlung, Player und Hilfe. Deutsch und Russisch.">
+<title>IPTV-TV-Einleitung – Schritt für Schritt</title>
+<style>
+:root{--bg:#0b1220;--panel:#131e30;--panel2:#18263b;--line:#293a52;--text:#edf4ff;--muted:#a9b8cc;--accent:#56d6c2;--accent2:#7db5ff;--warn:#ffd17c;--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:linear-gradient(180deg,#101b2d 0,#0b1220 420px);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{color:#8fc5ff;text-decoration:none}a:hover{text-decoration:underline}.wrap{width:min(1040px,calc(100% - 32px));margin:auto}
+header{position:sticky;top:0;z-index:5;background:#0b1220eF;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0}.brand{font-weight:850;letter-spacing:.2px}.brand span{color:var(--accent)}
+.lang{display:flex;gap:6px}.lang button,.menu a{border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:999px;padding:8px 13px;font-weight:700;cursor:pointer}.lang button.active{background:var(--accent);color:#07131b;border-color:var(--accent)}
+nav{display:flex;gap:8px;overflow:auto;padding:0 0 12px;scrollbar-width:thin}nav a{white-space:nowrap;color:var(--muted);font-size:13px;padding:6px 10px;border-radius:9px;background:#ffffff08}
+.hero{padding:48px 0 30px}.eyebrow{color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:1.5px;font-size:12px}.hero h1{font-size:clamp(32px,6vw,54px);line-height:1.06;margin:10px 0 14px;letter-spacing:-1.4px}.hero p{max-width:720px;color:var(--muted);font-size:18px}.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 16px;border-radius:12px;background:var(--accent);color:#07131b;font-weight:800}.btn.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line)}
+.notice{padding:15px 17px;border:1px solid #80663a;background:#3a2d184d;border-radius:14px;color:#ffe4ae;margin:16px 0 26px}
+section{padding:18px 0 12px}.section-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}.num{flex:none;width:38px;height:38px;border-radius:12px;background:#1c3948;color:var(--accent);display:grid;place-items:center;font-weight:900}.section-head h2{font-size:clamp(22px,4vw,29px);margin:0 0 3px}.section-head p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.card{background:linear-gradient(145deg,var(--panel),#101a2a);border:1px solid var(--line);border-radius:var(--radius);padding:19px;min-width:0}.card h3{margin:0 0 8px;font-size:18px}.card p{margin:7px 0;color:var(--muted)}.card ul,.card ol{padding-left:21px;color:var(--muted);margin:10px 0}.card li{margin:6px 0}.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}.links a{display:inline-block;background:#21334b;border:1px solid #344a66;border-radius:10px;padding:8px 11px;font-weight:700;font-size:14px}
+.step{display:flex;gap:12px;margin:12px 0}.step b{width:28px;height:28px;display:grid;place-items:center;background:#203b4b;color:var(--accent);border-radius:9px;flex:none}
+details{border:1px solid var(--line);border-radius:14px;background:#111c2c;margin:10px 0;overflow:hidden}summary{cursor:pointer;padding:14px 16px;font-weight:800;list-style:none}summary::-webkit-details-marker{display:none}summary:after{content:"＋";float:right;color:var(--accent)}details[open] summary:after{content:"−"}details .inside{padding:0 16px 16px;color:var(--muted)}
+.price{font-size:27px;font-weight:900;color:var(--accent)}.small{font-size:13px;color:var(--muted)}.tag{display:inline-block;padding:4px 8px;border-radius:7px;background:#23354b;color:#b9d8ff;font-size:12px;font-weight:800}
+footer{margin-top:45px;border-top:1px solid var(--line);padding:25px 0 45px;color:var(--muted);font-size:13px}
+[lang-panel]{display:none}.ru{display:none}body.ru-mode .de{display:none}body.ru-mode .ru{display:block}body.ru-mode nav .de{display:none}body.ru-mode nav .ru{display:inline}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.hero{padding-top:34px}.top{align-items:flex-start}.brand{font-size:14px}nav{margin-right:-16px}.card{padding:16px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <div class="top"><div class="brand">📺 IPTV <span>TV-EINLEITUNG</span></div><div class="lang"><button id="deBtn" class="active" type="button">🇩🇪 DE</button><button id="ruBtn" type="button">🇷🇺 RU</button></div></div>
+ <nav>
+  <a href="#start"><span class="de">Start</span><span class="ru">Начало</span></a><a href="#geraete"><span class="de">Geräte</span><span class="ru">Устройства</span></a><a href="#registrierung"><span class="de">Registrierung</span><span class="ru">Регистрация</span></a><a href="#zahlung"><span class="de">Zahlung</span><span class="ru">Оплата</span></a><a href="#player"><span class="de">Player</span><span class="ru">Плеер</span></a><a href="#hilfe"><span class="de">Hilfe</span><span class="ru">Помощь</span></a>
+ </nav>
+</div></header>
+<main class="wrap">
+<div class="hero" id="start">
+ <div class="eyebrow">Einfach erklärt · Schritt für Schritt</div>
+ <div class="de"><h1>IPTV selbst einrichten.</h1><p>Hier finden Sie die wichtigsten Schritte: passendes Gerät auswählen, bei Sharavoz registrieren, Zugang einrichten und IPTV auf Ihrem Fernseher starten.</p></div>
+ <div class="ru"><h1>Настройте IPTV самостоятельно.</h1><p>Здесь собраны основные шаги: выбор устройства, регистрация на Sharavoz, получение доступа и настройка IPTV на телевизоре.</p></div>
+ <div class="hero-actions"><a class="btn" href="#registrierung"><span class="de">Los geht’s →</span><span class="ru">Начать →</span></a><a class="btn secondary" href="https://youtu.be/ROjDS4LoKOE?si=NB7Y8MOPkn1En6Jk" target="_blank" rel="noopener">▶ Video ansehen</a></div>
+</div>
+<div class="notice"><div class="de">💡 <b>Sie sind unsicher?</b> Gehen Sie die Schritte der Reihe nach durch. Wenn Ihnen die Einrichtung zu kompliziert ist, bitten Sie eine technisch versierte Person um Hilfe.</div><div class="ru">💡 <b>Не уверены, что справитесь?</b> Проходите шаги по порядку. Если настройка кажется сложной, попросите помочь человека, который хорошо разбирается в технике.</div></div>
+
+<section id="geraete">
+ <div class="section-head"><div class="num">1</div><div><h2><span class="de">Gerät auswählen</span><span class="ru">Выбор устройства</span></h2><p><span class="de">Diese Geräte und Plattformen werden in der ursprünglichen Anleitung genannt.</span><span class="ru">В исходной инструкции указаны следующие устройства и платформы.</span></p></div></div>
+ <div class="grid">
+  <article class="card"><h3>📦 Strong LEAP Google TV Box</h3><p><span class="de">Google-TV-Box als externe Lösung für den Fernseher.</span><span class="ru">Приставка Google TV для подключения к телевизору.</span></p><div class="links"><a href="https://link.amazon/B0fGwNGiz" target="_blank" rel="noopener">Strong LEAP ansehen ↗</a></div></article>
+  <article class="card"><h3>📦 Strong TV Box</h3><p><span class="de">Eine weitere in der Anleitung empfohlene TV-Box.</span><span class="ru">Ещё одна приставка, указанная в инструкции.</span></p><div class="links"><a href="https://amzn.to/4pqIOE5" target="_blank" rel="noopener">Strong TV Box ansehen ↗</a></div></article>
+  <article class="card"><h3>📺 Android TV / Google TV</h3><p><span class="de">Auch kompatible Fernseher, Android-Boxen, Tablets und Smartphones können verwendet werden.</span><span class="ru">Также можно использовать совместимые телевизоры, Android-приставки, планшеты и смартфоны.</span></p></article>
+  <article class="card"><h3>📺 Samsung / LG Smart TV</h3><p><span class="de">Für Smart-TV-Geräte gibt es eine separate Anleitung.</span><span class="ru">Для телевизоров Smart TV есть отдельная инструкция.</span></p><div class="links"><a href="https://telegra.ph/SMART-TVs-Samsung-LG-EINSTELLUNGEN-01-14" target="_blank" rel="noopener">Smart-TV-Anleitung ↗</a></div></article>
+ </div>
+</section>
+
+<section id="registrierung">
+ <div class="section-head"><div class="num">2</div><div><h2><span class="de">Bei Sharavoz registrieren</span><span class="ru">Регистрация на Sharavoz</span></h2><p><span class="de">Verwenden Sie den bereitgestellten Registrierungslink.</span><span class="ru">Для регистрации используйте указанную ссылку.</span></p></div></div>
+ <div class="card">
+  <div class="de"><p>Öffnen Sie den Registrierungslink und legen Sie Ihr Konto an. Bewahren Sie Login und Passwort sicher auf – Sie benötigen Ihre Zugangsdaten später für die Einrichtung.</p><ol><li>Registrierungsseite öffnen.</li><li>Konto erstellen und Zugangsdaten notieren.</li><li>Im Sharavoz-Konto anmelden und die verfügbaren Anzeige-/Playlist-Einstellungen öffnen.</li></ol></div>
+  <div class="ru"><p>Откройте ссылку регистрации и создайте аккаунт. Сохраните логин и пароль — они понадобятся при дальнейшей настройке.</p><ol><li>Откройте страницу регистрации.</li><li>Создайте аккаунт и сохраните данные входа.</li><li>Войдите в личный кабинет Sharavoz и откройте настройки просмотра / плейлиста.</li></ol></div>
+  <div class="links"><a href="https://ztempz.xyz/4zfu4iug0xh9vwXwhbpT1L2WPHborxYMK-9ASrRt5rrkLoABFW794A==" target="_blank" rel="noopener">Sharavoz – Registrierung ↗</a></div>
+  <p class="small"><span class="de">Registrieren Sie sich über diesen Link, wenn Sie die in der ursprünglichen Anleitung genannten Konditionen nutzen möchten. Prüfen Sie die Konditionen vor Abschluss.</span><span class="ru">Если хотите воспользоваться условиями, указанными в исходной инструкции, регистрируйтесь по этой ссылке. Перед завершением проверьте условия.</span></p>
+ </div>
+</section>
+
+<section id="zahlung">
+ <div class="section-head"><div class="num">3</div><div><h2><span class="de">Preis und Zahlung</span><span class="ru">Стоимость и оплата</span></h2><p><span class="de">Preis und Zahlungsweg vor jeder Überweisung direkt bestätigen lassen.</span><span class="ru">Перед оплатой обязательно уточните актуальную стоимость и способ оплаты.</span></p></div></div>
+ <div class="grid">
+  <article class="card"><h3><span class="de">Aktuelle Konditionen</span><span class="ru">Актуальные условия</span></h3><div class="price">35 € / Jahr</div><p><span class="de">Für bis zu 2 Geräte gleichzeitig. Für mehr als 2 Geräte: 70 € / Jahr.</span><span class="ru">До 2 устройств одновременно. Более 2 устройств: 70 € в год.</span></p><span class="tag"><span class="de">Konditionen vor Zahlung bestätigen</span><span class="ru">Уточните перед оплатой</span></span></article>
+  <article class="card"><h3>✉️ Zahlungskontakt</h3><p><span class="de">Die ursprüngliche Anleitung nennt Santa als Kontakt für Zahlungsfragen. Bitte ausschließlich die Zahlungsdetails bestätigen lassen.</span><span class="ru">В исходной инструкции Santa указан как контакт по вопросам оплаты. Сначала подтвердите у него реквизиты и сумму.</span></p><div class="links"><a href="https://t.me/santa171" target="_blank" rel="noopener">Telegram @santa171 ↗</a><a href="mailto:171santa@gmail.com">E-Mail ↗</a></div></article>
+ </div>
+ <div class="notice"><div class="de">🔒 <b>Wichtiger Zahlungshinweis:</b> Eine PayPal-Zahlung als „Freunde und Familie“ bietet in der Regel keinen Käuferschutz. Überweisen Sie nur, wenn Sie dem Empfänger vertrauen und die Bedingungen verstanden haben. Prüfen Sie Empfänger, Betrag und Zahlungsanweisung direkt, bevor Sie zahlen.</div><div class="ru">🔒 <b>Важно об оплате:</b> Перевод PayPal «Друзьям и близким» обычно не защищён программой защиты покупателя. Отправляйте деньги только если доверяете получателю и понимаете условия. Перед оплатой лично проверьте получателя, сумму и инструкцию.</div></div>
+ <details><summary><span class="de">Welche Angaben werden für die Zahlungsbestätigung benötigt?</span><span class="ru">Какие данные нужны для подтверждения оплаты?</span></summary><div class="inside"><div class="de">Die bisherige Anleitung nennt: Sharavoz-Login, Zahlungsbetrag, Land und Vorname sowie anschließend einen Zahlungsnachweis und den Namen des Zahlenden. Senden Sie keine Passwörter oder sensiblen Kontodaten.</div><div class="ru">В прежней инструкции указаны: логин Sharavoz, сумма, страна и имя; после оплаты — подтверждение платежа и имя плательщика. Не отправляйте пароли и конфиденциальные данные аккаунта.</div></div></details>
+ <details><summary><span class="de">Vorlagen und Beispielbilder aus der alten Anleitung</span><span class="ru">Шаблоны сообщений и примеры из старой инструкции</span></summary><div class="inside"><p><span class="de">Die Telegraph-Seite enthält mehrere Beispielbilder und Textvorlagen. Diese visuellen Beispiele werden in einer nächsten Überarbeitungsrunde einzeln übernommen und geprüft.</span><span class="ru">На странице Telegraph есть несколько изображений с примерами и шаблонами сообщений. Их нужно отдельно перенести и проверить на следующем этапе.</span></p></div></details>
+</section>
+
+<section id="player">
+ <div class="section-head"><div class="num">4</div><div><h2><span class="de">IPTV-Player installieren</span><span class="ru">Установка IPTV-плеера</span></h2><p><span class="de">Wählen Sie die Anleitung passend zu Ihrem Gerät.</span><span class="ru">Выберите инструкцию для своего устройства.</span></p></div></div>
+ <div class="grid">
+  <article class="card"><h3>📺 Televizo</h3><p><span class="de">Ausführliche Anleitung für Stick, Fernseher und TV-Box.</span><span class="ru">Подробная инструкция для Stick, телевизора и TV Box.</span></p><div class="links"><a href="https://telegra.ph/TELEVIZO-INSTALLIEREN-11-10" target="_blank" rel="noopener">Televizo installieren ↗</a></div></article>
+  <article class="card"><h3>📺 IPTV Pro – Alternative</h3><p><span class="de">Der frühere Anleitungslink muss geprüft werden; die Zielseite war zuletzt nicht verfügbar.</span><span class="ru">Старая ссылка на инструкцию требует проверки — ранее целевая страница была недоступна.</span></p><div class="links"><a href="https://telegra.ph/IPTV-PRO-EINSTELLEN-IPTV-PRO-ZAPUSTIT-12-05" target="_blank" rel="noopener">Alten Link prüfen ↗</a></div></article>
+  <article class="card"><h3>📺 AnyPlayer von Sharavoz</h3><p><span class="de">Downloader-Code: <b>7482776</b>. Laut bisheriger Beschreibung nur für Android TV, Fire TV und Google TV – keine Touch-Unterstützung. Für die Anmeldung wird die OTT-ID benötigt. Entwicklung derzeit ausgesetzt; Verfügbarkeit kann eingeschränkt sein.</span><span class="ru">Код Downloader: <b>7482776</b>. По прежнему описанию работает только на Android TV, Fire TV и Google TV — сенсорные устройства не поддерживаются. Для входа нужна OTT-ID. Разработка приостановлена, работа плеера может быть ограничена.</span></p><div class="links"><a href="https://youtu.be/8lgdlFmMg_s?si=IouIwHI4OYEBch8a" target="_blank" rel="noopener">AnyPlayer – видео ↗</a></div></article>
+  <article class="card"><h3>📡 Playlist und EPG</h3><p><span class="de">Im Sharavoz-Konto finden Sie die Playlist-/OTT-Daten. Verwenden Sie möglichst einen anonymen Playlist-Link, wenn Sharavoz diese Option anbietet. Teilen Sie Ihre persönliche Playlist-Adresse nicht öffentlich.</span><span class="ru">Данные плейлиста / OTT находятся в личном кабинете Sharavoz. Если доступна анонимная ссылка на плейлист, можно использовать её. Не публикуйте персональную ссылку открыто.</span></p><div class="links"><a href="https://tinyurl.com/" target="_blank" rel="noopener">TinyURL – Link kürzen ↗</a></div></article>
+ </div>
+</section>
+
+<section id="hilfe">
+ <div class="section-head"><div class="num">5</div><div><h2><span class="de">Videos und Hilfe</span><span class="ru">Видео и помощь</span></h2><p><span class="de">Weitere Anleitungen und praktische Tipps.</span><span class="ru">Дополнительные инструкции и полезные советы.</span></p></div></div>
+ <div class="grid">
+  <article class="card"><h3>🎬 Fire TV / Amazon Stick</h3><p><span class="de">Videos und Tipps zu Einrichtung, Einstellungen und Fehlerbehebung.</span><span class="ru">Видео и советы по настройке, параметрам и решению проблем.</span></p><div class="links"><a href="https://telegra.ph/STICK-VIDEOS-02-13" target="_blank" rel="noopener">Stick-Videos öffnen ↗</a></div></article>
+  <article class="card"><h3>🌍 Kategorien / Länder ausblenden</h3><p><span class="de">Kurzes Video zum Ausblenden nicht benötigter Kategorien.</span><span class="ru">Короткое видео о том, как скрыть ненужные категории.</span></p><div class="links"><a href="https://youtube.com/shorts/q_IbVwVPeIQ?si=426uECpJfN58unw7" target="_blank" rel="noopener">Video ansehen ↗</a></div></article>
+  <article class="card"><h3>⌨️ Russische Tastatur</h3><p><span class="de">Anleitung zur Installation einer russischen Tastatur auf dem Stick.</span><span class="ru">Инструкция по установке русской клавиатуры на Stick.</span></p><div class="links"><a href="https://telegra.ph/RUSSKAYA-KLAVIATURA-2024-03-13" target="_blank" rel="noopener">Tastatur-Anleitung ↗</a></div></article>
+  <article class="card"><h3>📶 Internet und Geräteleistung</h3><ul><li><span class="de">Internetverbindung testen; möglichst stabiles 5-GHz-WLAN verwenden.</span><span class="ru">Проверьте интернет; по возможности используйте стабильный Wi-Fi 5 ГГц.</span></li><li><span class="de">Nicht benötigte Apps und Dateien entfernen.</span><span class="ru">Удалите ненужные приложения и файлы.</span></li><li><span class="de">Bei einem Defekt Gerät und Player neu einrichten.</span><span class="ru">При неисправности устройства установите плеер заново на исправном устройстве.</span></li></ul></article>
+ </div>
+ <div class="card" style="margin-top:13px"><h3>📲 Weitere Apps und Materialien</h3><p><span class="de">Im Telegram-Kanal werden zusätzliche App-Versionen und Hinweise veröffentlicht. Alternativ gibt es eine Informationsseite ohne Telegram.</span><span class="ru">В Telegram-канале публикуются дополнительные версии приложений и материалы. Есть также отдельная страница без Telegram.</span></p><div class="links"><a href="https://t.me/+CfXHboLZ61wyNTFi" target="_blank" rel="noopener">Privater Telegram-Kanal ↗</a><a href="https://telegra.ph/NETFLIX-YOUTUBE-KINO--EXTRAS-02-05" target="_blank" rel="noopener">Weitere Infos ohne Telegram ↗</a></div></div>
+</section>
+<footer><div class="de">Diese Seite ist eine unabhängige Einrichtungsübersicht und keine offizielle Sharavoz-Webseite. Produktverfügbarkeit, Preise, Links und Zahlungsbedingungen können sich ändern. Bitte vor der Nutzung direkt beim jeweiligen Anbieter prüfen.</div><div class="ru">Эта страница — независимая инструкция по настройке, а не официальный сайт Sharavoz. Наличие устройств, цены, ссылки и условия оплаты могут меняться. Перед использованием проверяйте информацию у соответствующего поставщика.</div><p>© IPTV-TV-Einleitung · <a href="https://github.com/smart222tech/IPTV-TV-EINLEITUNG">GitHub</a></p></footer>
+</main>
+<script>
+const de=document.getElementById('deBtn'),ru=document.getElementById('ruBtn');
+function setLang(lang){document.body.classList.toggle('ru-mode',lang==='ru');de.classList.toggle('active',lang==='de');ru.classList.toggle('active',lang==='ru');document.documentElement.lang=lang;try{localStorage.setItem('iptvGuideLang',lang)}catch(e){}}
+de.addEventListener('click',()=>setLang('de'));ru.addEventListener('click',()=>setLang('ru'));
+try{setLang(localStorage.getItem('iptvGuideLang')==='ru'?'ru':'de')}catch(e){setLang('de')}
+</script>
+</body></html>
