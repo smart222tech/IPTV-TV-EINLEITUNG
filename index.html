@@ -21,6 +21,13 @@ section{padding:18px 0 12px}.section-head{display:flex;align-items:flex-start;ga
 .step{display:flex;gap:12px;margin:12px 0}.step b{width:28px;height:28px;display:grid;place-items:center;background:#203b4b;color:var(--accent);border-radius:9px;flex:none}
 details{border:1px solid var(--line);border-radius:14px;background:#111c2c;margin:10px 0;overflow:hidden}summary{cursor:pointer;padding:14px 16px;font-weight:800;list-style:none}summary::-webkit-details-marker{display:none}summary:after{content:"＋";float:right;color:var(--accent)}details[open] summary:after{content:"−"}details .inside{padding:0 16px 16px;color:var(--muted)}
 .price{font-size:27px;font-weight:900;color:var(--accent)}.small{font-size:13px;color:var(--muted)}.tag{display:inline-block;padding:4px 8px;border-radius:7px;background:#23354b;color:#b9d8ff;font-size:12px;font-weight:800}
+.payment-form{margin-top:18px;padding:15px;border:1px solid var(--line);border-radius:14px;background:#0d1726}
+.payment-form h4{margin:0 0 12px;font-size:16px}
+.payment-form label{display:block;margin:11px 0 5px;color:var(--muted);font-size:13px;font-weight:700}
+.payment-form input,.payment-form select,.payment-form textarea{display:block;width:100%;padding:11px 12px;border:1px solid #3a4c65;border-radius:9px;background:#101d2e;color:var(--text);font:inherit}
+.payment-form textarea{resize:vertical;line-height:1.5}
+.action-btn,.action-link{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--accent);border-radius:10px;padding:9px 12px;background:var(--accent);color:#07131b;font:700 14px system-ui;cursor:pointer}
+.action-link{background:#21334b;border-color:#344a66;color:#edf4ff}
 footer{margin-top:45px;border-top:1px solid var(--line);padding:25px 0 45px;color:var(--muted);font-size:13px}
 [lang-panel]{display:none}.ru{display:none}body.ru-mode .de{display:none}body.ru-mode .ru{display:block}body.ru-mode nav .de{display:none}body.ru-mode nav .ru{display:inline}
 @media(max-width:700px){.grid{grid-template-columns:1fr}.hero{padding-top:34px}.top{align-items:flex-start}.brand{font-size:14px}nav{margin-right:-16px}.card{padding:16px}}
@@ -66,7 +73,23 @@ footer{margin-top:45px;border-top:1px solid var(--line);padding:25px 0 45px;colo
  <div class="section-head"><div class="num">3</div><div><h2><span class="de">Preis und Zahlung</span><span class="ru">Стоимость и оплата</span></h2><p><span class="de">Preis und Zahlungsweg vor jeder Überweisung direkt bestätigen lassen.</span><span class="ru">Перед оплатой обязательно уточните актуальную стоимость и способ оплаты.</span></p></div></div>
  <div class="grid">
   <article class="card"><h3><span class="de">Aktuelle Konditionen</span><span class="ru">Актуальные условия</span></h3><div class="price">35 € / Jahr</div><p><span class="de">Für bis zu 2 Geräte gleichzeitig. Für mehr als 2 Geräte: 70 € / Jahr.</span><span class="ru">До 2 устройств одновременно. Более 2 устройств: 70 € в год.</span></p><span class="tag"><span class="de">Konditionen vor Zahlung bestätigen</span><span class="ru">Уточните перед оплатой</span></span></article>
-  <article class="card"><h3>✉️ Zahlungskontakt</h3><p><span class="de">Die ursprüngliche Anleitung nennt Santa als Kontakt für Zahlungsfragen. Bitte ausschließlich die Zahlungsdetails bestätigen lassen.</span><span class="ru">В исходной инструкции Santa указан как контакт по вопросам оплаты. Сначала подтвердите у него реквизиты и сумму.</span></p><div class="links"><a href="https://t.me/santa171" target="_blank" rel="noopener">Telegram @santa171 ↗</a><a href="mailto:171santa@gmail.com">E-Mail ↗</a></div></article>
+  <article class="card"><h3>✉️ Zahlungskontakt / Контакт по оплате</h3><p><span class="de">Schreiben Sie Santa am besten direkt über Telegram. Unten können Sie eine fertige englische Nachricht erstellen, kopieren oder mit einem Klick im Telegram-Chat öffnen.</span><span class="ru">Лучше всего написать Санте напрямую в Telegram. Ниже можно составить готовое сообщение на английском, скопировать его или открыть чат Telegram уже с подготовленным текстом.</span></p><div class="links"><a href="https://t.me/santa171" target="_blank" rel="noopener">Telegram @santa171 ↗</a><a href="mailto:171santa@gmail.com">E-Mail ↗</a></div>
+   <div class="payment-form">
+    <h4><span class="de">Nachricht an Santa vorbereiten</span><span class="ru">Подготовить сообщение Санте</span></h4>
+    <label for="payType"><span class="de">Zahlungsart</span><span class="ru">Тип оплаты</span></label>
+    <select id="payType"><option value="first"><span class="de">Erste Registrierung – 30 €</span>First registration – 30 €</option><option value="renewal">Annual renewal – 35 €</option></select>
+    <label for="sharavozLogin"><span class="de">Sharavoz-Login</span><span class="ru">Логин Sharavoz</span></label>
+    <input id="sharavozLogin" type="text" placeholder="z. B. meinLogin">
+    <label for="payCountry"><span class="de">Land</span><span class="ru">Страна</span></label>
+    <input id="payCountry" type="text" value="Germany">
+    <label for="payName"><span class="de">Ihr Vorname</span><span class="ru">Ваше имя</span></label>
+    <input id="payName" type="text" placeholder="z. B. Alex">
+    <label for="payMessage"><span class="de">Fertige Nachricht auf Englisch</span><span class="ru">Готовое сообщение на английском</span></label>
+    <textarea id="payMessage" rows="8" readonly></textarea>
+    <div class="links"><button class="action-btn" type="button" id="copyPayMessage"><span class="de">Nachricht kopieren</span><span class="ru">Скопировать сообщение</span></button><a class="action-link" id="openSantaTelegram" href="https://t.me/santa171" target="_blank" rel="noopener"><span class="de">Telegram mit Nachricht öffnen ↗</span><span class="ru">Открыть Telegram с сообщением ↗</span></a></div>
+    <p class="small"><span class="de">Bitte ersetzen Sie alle Angaben durch Ihre eigenen Daten. Bei der ersten Registrierung sind es 30 €, bei der jährlichen Verlängerung 35 €. Senden Sie niemals Ihr Passwort.</span><span class="ru">Замените данные на свои. При первой регистрации — 30 €, при ежегодном продлении — 35 €. Никогда не отправляйте пароль.</span></p>
+   </div>
+  </article>
  </div>
  <div class="notice"><div class="de">🔒 <b>Wichtiger Zahlungshinweis:</b> Eine PayPal-Zahlung als „Freunde und Familie“ bietet in der Regel keinen Käuferschutz. Überweisen Sie nur, wenn Sie dem Empfänger vertrauen und die Bedingungen verstanden haben. Prüfen Sie Empfänger, Betrag und Zahlungsanweisung direkt, bevor Sie zahlen.</div><div class="ru">🔒 <b>Важно об оплате:</b> Перевод PayPal «Друзьям и близким» обычно не защищён программой защиты покупателя. Отправляйте деньги только если доверяете получателю и понимаете условия. Перед оплатой лично проверьте получателя, сумму и инструкцию.</div></div>
  <details><summary><span class="de">Welche Angaben werden für die Zahlungsbestätigung benötigt?</span><span class="ru">Какие данные нужны для подтверждения оплаты?</span></summary><div class="inside"><div class="de">Die bisherige Anleitung nennt: Sharavoz-Login, Zahlungsbetrag, Land und Vorname sowie anschließend einen Zahlungsnachweis und den Namen des Zahlenden. Senden Sie keine Passwörter oder sensiblen Kontodaten.</div><div class="ru">В прежней инструкции указаны: логин Sharavoz, сумма, страна и имя; после оплаты — подтверждение платежа и имя плательщика. Не отправляйте пароли и конфиденциальные данные аккаунта.</div></div></details>
@@ -100,5 +123,29 @@ const de=document.getElementById('deBtn'),ru=document.getElementById('ruBtn');
 function setLang(lang){document.body.classList.toggle('ru-mode',lang==='ru');de.classList.toggle('active',lang==='de');ru.classList.toggle('active',lang==='ru');document.documentElement.lang=lang;try{localStorage.setItem('iptvGuideLang',lang)}catch(e){}}
 de.addEventListener('click',()=>setLang('de'));ru.addEventListener('click',()=>setLang('ru'));
 try{setLang(localStorage.getItem('iptvGuideLang')==='ru'?'ru':'de')}catch(e){setLang('de')}
+
+const payType=document.getElementById('payType');
+const payLogin=document.getElementById('sharavozLogin');
+const payCountry=document.getElementById('payCountry');
+const payName=document.getElementById('payName');
+const payMessage=document.getElementById('payMessage');
+const openSanta=document.getElementById('openSantaTelegram');
+function buildPayMessage(){
+ const first=payType.value==='first';
+ const amount=first?'30':'35';
+ const period=first?'first registration':'annual renewal';
+ const login=payLogin.value.trim()||'[Your Sharavoz login]';
+ const country=payCountry.value.trim()||'[Your country]';
+ const name=payName.value.trim()||'[Your first name]';
+ const message='Hello Santa,\\n\\nI would like to top up my Sharavoz balance via PayPal using Friends and Family.\\nPlease send me your PayPal email address or payment link.\\n\\nSharavoz login: '+login+'\\nPayment: '+period+' – '+amount+' EUR\\nCountry: '+country+'\\nName: '+name+'\\n\\nBest regards,\\n'+name;
+ payMessage.value=message;
+ openSanta.href='https://t.me/santa171?text='+encodeURIComponent(message);
+}
+[payType,payLogin,payCountry,payName].forEach(el=>el.addEventListener('input',buildPayMessage));
+document.getElementById('copyPayMessage').addEventListener('click',async()=>{
+ try{await navigator.clipboard.writeText(payMessage.value);document.getElementById('copyPayMessage').textContent=document.body.classList.contains('ru-mode')?'Скопировано ✓':'Copied ✓'}
+ catch(e){payMessage.focus();payMessage.select();document.execCommand('copy');}
+});
+buildPayMessage();
 </script>
 </body></html>
