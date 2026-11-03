@@ -77,17 +77,17 @@ footer{margin-top:45px;border-top:1px solid var(--line);padding:25px 0 45px;colo
    <div class="payment-form">
     <h4><span class="de">Nachricht an Santa vorbereiten</span><span class="ru">Подготовить сообщение Санте</span></h4>
     <label for="payType"><span class="de">Zahlungsart</span><span class="ru">Тип оплаты</span></label>
-    <select id="payType"><option value="first">First registration / Erste Registrierung – 30 €</option><option value="renewal">Annual renewal / Jährliche Verlängerung – 35 €</option></select>
+    <select id="payType"><option value="first">30 € – erste Registrierung / первая регистрация</option><option value="renewal">35 € – Verlängerung / продление</option></select>
     <label for="sharavozLogin"><span class="de">Sharavoz-Login</span><span class="ru">Логин Sharavoz</span></label>
     <input id="sharavozLogin" type="text" placeholder="z. B. meinLogin">
     <label for="payCountry"><span class="de">Land</span><span class="ru">Страна</span></label>
     <input id="payCountry" type="text" value="Germany">
     <label for="payName"><span class="de">Ihr Vorname</span><span class="ru">Ваше имя</span></label>
     <input id="payName" type="text" placeholder="z. B. Alex">
-    <label for="payMessage"><span class="de">Fertige Nachricht auf Englisch</span><span class="ru">Готовое сообщение на английском</span></label>
+    <label for="payMessage"><span class="de">Fertige Nachricht auf Englisch</span><span class="ru">Готовое сообщение на русском</span></label>
     <textarea id="payMessage" rows="8" readonly></textarea>
     <div class="links"><button class="action-btn" type="button" id="copyPayMessage"><span class="de">Nachricht kopieren</span><span class="ru">Скопировать сообщение</span></button><a class="action-link" id="openSantaTelegram" href="https://t.me/santa171" target="_blank" rel="noopener"><span class="de">Telegram mit Nachricht öffnen ↗</span><span class="ru">Открыть Telegram с сообщением ↗</span></a></div>
-    <p class="small"><span class="de">Bitte ersetzen Sie alle Angaben durch Ihre eigenen Daten. Bei der ersten Registrierung sind es 30 €, bei der jährlichen Verlängerung 35 €. Senden Sie niemals Ihr Passwort.</span><span class="ru">Замените данные на свои. При первой регистрации — 30 €, при ежегодном продлении — 35 €. Никогда не отправляйте пароль.</span></p>
+    <p class="small"><span class="de">Wählen Sie den passenden Betrag und tragen Sie Ihre Daten ein. 30 € bei der ersten Registrierung, 35 € bei der Verlängerung. Senden Sie niemals Ihr Passwort.</span><span class="ru">Выберите нужную сумму и укажите свои данные. 30 € при первой регистрации, 35 € при продлении. Никогда не отправляйте пароль.</span></p>
    </div>
   </article>
  </div>
@@ -131,17 +131,20 @@ const payName=document.getElementById('payName');
 const payMessage=document.getElementById('payMessage');
 const openSanta=document.getElementById('openSantaTelegram');
 function buildPayMessage(){
- const first=payType.value==='first';
- const amount=first?'30':'35';
- const period=first?'first registration':'annual renewal';
- const login=payLogin.value.trim()||'[Your Sharavoz login]';
- const country=payCountry.value.trim()||'[Your country]';
- const name=payName.value.trim()||'[Your first name]';
- const message='Hello Santa,\n\nI would like to top up my Sharavoz balance via PayPal using Friends and Family.\nPlease send me your PayPal email address or payment link.\n\nSharavoz login: '+login+'\nPayment: '+period+' – '+amount+' EUR\nCountry: '+country+'\nName: '+name+'\n\nBest regards,\n'+name;
+ const amount=payType.value==='first'?'30':'35';
+ const login=payLogin.value.trim()||(document.body.classList.contains('ru-mode')?'[Ваш логин Sharavoz]':'[Your Sharavoz login]');
+ const country=payCountry.value.trim()||(document.body.classList.contains('ru-mode')?'[Ваша страна]':'[Your country]');
+ const name=payName.value.trim()||(document.body.classList.contains('ru-mode')?'[Ваше имя]':'[Your name]');
+ const russian=document.body.classList.contains('ru-mode');
+ const message=russian
+  ? 'Добрый день! Хочу пополнить баланс на Sharavoz.\\nМой логин Sharavoz: '+login+'\\nПожалуйста, пришлите ссылку или email PayPal для оплаты. Оплату буду отправлять как «Друзья и близкие» (Friends and Family), без комментария к платежу.\\nСтрана: '+country+'\\nСумма: '+amount+' €\\nС уважением,\\n'+name
+  : 'Hello! I would like to top up my Sharavoz balance.\\nMy Sharavoz login: '+login+'\\nPlease send me your PayPal payment link or email address. I will pay using Friends and Family, without adding a payment note.\\nCountry: '+country+'\\nAmount: '+amount+' EUR\\nBest regards,\\n'+name;
  payMessage.value=message;
  openSanta.href='https://t.me/santa171?text='+encodeURIComponent(message);
 }
 [payType,payLogin,payCountry,payName].forEach(el=>el.addEventListener('input',buildPayMessage));
+de.addEventListener('click',buildPayMessage);
+ru.addEventListener('click',buildPayMessage);
 document.getElementById('copyPayMessage').addEventListener('click',async()=>{
  try{await navigator.clipboard.writeText(payMessage.value);document.getElementById('copyPayMessage').textContent=document.body.classList.contains('ru-mode')?'Скопировано ✓':'Copied ✓'}
  catch(e){payMessage.focus();payMessage.select();document.execCommand('copy');}
