@@ -137,8 +137,8 @@ function buildPayMessage(){
  const name=payName.value.trim()||(document.body.classList.contains('ru-mode')?'[Ваше имя]':'[Your name]');
  const russian=document.body.classList.contains('ru-mode');
  const message=russian
-  ? 'Добрый день! Хочу пополнить баланс на Sharavoz.\\nМой логин Sharavoz: '+login+'\\nПожалуйста, пришлите ссылку или email PayPal для оплаты. Оплату буду отправлять как «Друзья и близкие» (Friends and Family), без комментария к платежу.\\nСтрана: '+country+'\\nСумма: '+amount+' €\\nС уважением,\\n'+name
-  : 'Hello! I would like to top up my Sharavoz balance.\\nMy Sharavoz login: '+login+'\\nPlease send me your PayPal payment link or email address. I will pay using Friends and Family, without adding a payment note.\\nCountry: '+country+'\\nAmount: '+amount+' EUR\\nBest regards,\\n'+name;
+  ? 'Добрый день! Хочу пополнить баланс на Sharavoz.\nМой логин Sharavoz: '+login+'\nПожалуйста, пришлите ссылку или email PayPal для оплаты. Оплату буду отправлять как «Друзья и близкие» (Friends and Family), без комментария к платежу.\nСтрана: '+country+'\nСумма: '+amount+' €\nС уважением,\n'+name
+  : 'Hello! I would like to top up my Sharavoz balance.\nMy Sharavoz login: '+login+'\nPlease send me your PayPal payment link or email address. I will pay using Friends and Family, without adding a payment note.\nCountry: '+country+'\nAmount: '+amount+' EUR\nBest regards,\n'+name;
  payMessage.value=message;
  openSanta.href='https://t.me/santa171?text='+encodeURIComponent(message);
 }
