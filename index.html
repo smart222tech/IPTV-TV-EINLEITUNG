@@ -77,7 +77,7 @@ footer{margin-top:45px;border-top:1px solid var(--line);padding:25px 0 45px;colo
    <div class="payment-form">
     <h4><span class="de">Nachricht an Santa vorbereiten</span><span class="ru">Подготовить сообщение Санте</span></h4>
     <label for="payType"><span class="de">Zahlungsart</span><span class="ru">Тип оплаты</span></label>
-    <select id="payType"><option value="first"><span class="de">Erste Registrierung – 30 €</span>First registration – 30 €</option><option value="renewal">Annual renewal – 35 €</option></select>
+    <select id="payType"><option value="first">First registration / Erste Registrierung – 30 €</option><option value="renewal">Annual renewal / Jährliche Verlängerung – 35 €</option></select>
     <label for="sharavozLogin"><span class="de">Sharavoz-Login</span><span class="ru">Логин Sharavoz</span></label>
     <input id="sharavozLogin" type="text" placeholder="z. B. meinLogin">
     <label for="payCountry"><span class="de">Land</span><span class="ru">Страна</span></label>
@@ -137,7 +137,7 @@ function buildPayMessage(){
  const login=payLogin.value.trim()||'[Your Sharavoz login]';
  const country=payCountry.value.trim()||'[Your country]';
  const name=payName.value.trim()||'[Your first name]';
- const message='Hello Santa,\\n\\nI would like to top up my Sharavoz balance via PayPal using Friends and Family.\\nPlease send me your PayPal email address or payment link.\\n\\nSharavoz login: '+login+'\\nPayment: '+period+' – '+amount+' EUR\\nCountry: '+country+'\\nName: '+name+'\\n\\nBest regards,\\n'+name;
+ const message='Hello Santa,\n\nI would like to top up my Sharavoz balance via PayPal using Friends and Family.\nPlease send me your PayPal email address or payment link.\n\nSharavoz login: '+login+'\nPayment: '+period+' – '+amount+' EUR\nCountry: '+country+'\nName: '+name+'\n\nBest regards,\n'+name;
  payMessage.value=message;
  openSanta.href='https://t.me/santa171?text='+encodeURIComponent(message);
 }
